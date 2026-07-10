@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings version="2">
+    <section id="basic">
+        <category label="Grundeinstellungen">
+            <!-- TMDB API Key ist fest im Addon eingebettet; kein Benutzer-Eingabefeld -->
+            <group label="Qualität">
+                <setting id="quality" type="integer" label="Video-Qualität" default="0" options="Auto|720p|1080p">
+                    <description>Bevorzugte Video-Qualität</description>
+                </setting>
+            </group>
+            
+            <group label="Cache">
+                <setting id="cache_ttl" type="integer" label="Cache-Gültigkeitsdauer (Stunden)" default="24" constraints="min=1,max=168">
+                    <description>Wie lange Daten im Cache gespeichert werden (1-168 Stunden)</description>
+                </setting>
+                <setting id="cache_clear" type="action" label="Cache jetzt löschen">
+                    <action>RunPlugin(plugin://plugin.video.multitv/?action=clear_cache)</action>
+                </setting>
+            </group>
+        </category>
+    </section>
+    
+    <section id="advanced">
+        <category label="Erweiterte Einstellungen">
+            <group label="EPG">
+                <setting id="epg_enabled" type="boolean" label="EPG aktivieren" default="true">
+                    <description>Aktiviere elektronischen Programmführer</description>
+                </setting>
+                <setting id="epg_update_interval" type="integer" label="EPG Update-Intervall (Minuten)" default="60" constraints="min=15,max=1440">
+                    <description>Wie oft EPG-Daten aktualisiert werden</description>
+                </setting>
+            </group>
+            
+            <group label="Quellen">
+                <setting id="use_joyn" type="boolean" label="Joyn aktivieren" default="true">
+                    <description>Verwende Joyn als Datenquelle</description>
+                </setting>
+                <setting id="use_viu" type="boolean" label="VIU aktivieren" default="true">
+                    <description>Verwende VIU als Datenquelle</description>
+                </setting>
+            </group>
+            
+            <group label="Logging">
+                <setting id="debug_logging" type="boolean" label="Debug-Logging" default="false">
+                    <description>Aktiviere erweiterte Debug-Ausgaben in der Log-Datei</description>
+                </setting>
+            </group>
+        </category>
+    </section>
+    
+    <section id="appearance">
+        <category label="Erscheinungsbild">
+            <group label="Layout">
+                <setting id="list_style" type="integer" label="Listen-Stil" default="0" options="Große Icons|Kleine Icons|Detaillierte Liste">
+                    <description>Wie Inhalte angezeigt werden</description>
+                </setting>
+                <setting id="show_ratings" type="boolean" label="Bewertungen anzeigen" default="true">
+                    <description>Zeige Bewertungen an</description>
+                </setting>
+            </group>
+            
+            <group label="Favoriten">
+                <setting id="show_favorites" type="boolean" label="Favoriten-Sektion zeigen" default="true">
+                    <description>Zeige Favoriten-Menü im Hauptmenü</description>
+                </setting>
+            </group>
+        </category>
+    </section>
+</settings>
