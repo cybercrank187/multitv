@@ -13,7 +13,11 @@ from lib.tmdb import tmdb
 from lib.utils import ADDON_ID, format_duration, clean_string
 
 # Get the plugin handle
-HANDLE = int(sys.argv[1])
+try:
+    HANDLE = int(sys.argv[1])
+except (IndexError, ValueError, TypeError):
+    HANDLE = -1
+
 ADDON = xbmcaddon.Addon()
 
 # Set plugin content type
@@ -438,5 +442,6 @@ def show_mediathek(channel):
 
 
 if __name__ == '__main__':
-    params = parse_qs(sys.argv[2].lstrip('?'))
+    query = sys.argv[2] if len(sys.argv) > 2 else ''
+    params = parse_qs(query.lstrip('?')) if query else {}
     router(params)

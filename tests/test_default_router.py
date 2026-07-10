@@ -1,3 +1,4 @@
+import importlib
 import os
 import sys
 import types
@@ -92,6 +93,15 @@ sys.modules['xbmcplugin'] = xbmcplugin
 
 sys.argv = ['plugin.py', '1', '']
 import default
+
+
+def test_import_handles_missing_handle_argument():
+    sys.modules.pop('default', None)
+    sys.argv = ['plugin.py']
+
+    module = importlib.import_module('default')
+
+    assert module.HANDLE == -1
 
 
 def test_router_builds_movie_items_with_metadata():
